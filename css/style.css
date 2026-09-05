@@ -1,0 +1,678 @@
+/* =================================================================
+   MONT BARBIER — Feuille de style
+   Palette : noir et blanc, look "premium" et épuré.
+   ================================================================= */
+
+/* --- Réinitialisation de base ------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/bordures inclus dans la largeur */
+}
+
+:root {
+  --noir: #0a0a0a;
+  --blanc: #f7f7f5;
+  --gris: #8a8a8a;
+  --gris-clair: #d9d9d6;
+  --police-titre: 'Cormorant Garamond', serif;
+  --police-texte: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; /* défilement doux vers les ancres (#services, #contact...) */
+}
+
+body {
+  background: var(--blanc);
+  color: var(--noir);
+  font-family: var(--police-texte);
+  overflow-x: hidden; /* évite le défilement horizontal accidentel */
+}
+
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Décale les sections vers le bas au défilement pour ne pas
+   qu'elles se cachent sous la barre de navigation fixe */
+section, .footer {
+  scroll-margin-top: 80px;
+}
+
+/* =================================================================
+   BOUTONS (réutilisés dans nav / hero)
+   ================================================================= */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-family: var(--police-texte);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline {
+  border: 1px solid var(--noir);
+  color: var(--noir);
+}
+.btn-outline:hover {
+  background: var(--noir);
+  color: var(--blanc);
+}
+
+/* =================================================================
+   NAVIGATION
+   ================================================================= */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blanc);
+}
+.nav-logo img {
+  height: 45px;
+  width: auto;
+}
+.nav-logo span {
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-links a {
+  color: var(--blanc);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+.nav-links a:not(.btn):hover {
+  color: var(--gris-clair);
+}
+.nav-links .btn-outline {
+  border-color: var(--blanc);
+  color: var(--blanc);
+}
+.nav-links .btn-outline:hover {
+  background: var(--blanc);
+  color: var(--noir);
+}
+
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(247, 247, 245, 0.45);
+  border-radius: 50%;
+  color: var(--blanc);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.nav-socials svg {
+  width: 14px;
+  height: 14px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-socials a:hover {
+    border-color: var(--blanc);
+    background: rgba(247, 247, 245, 0.1);
+  }
+}
+
+#burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--blanc);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../images/hero.jpg') center center / cover no-repeat;
+}
+
+/* Voile noir semi-transparent pour faire ressortir le texte */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--blanc);
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  letter-spacing: 0.08em;
+}
+
+.hero-slogan {
+  font-family: var(--police-titre);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  margin-top: 12px;
+  font-style: italic;
+  color: var(--gris-clair);
+}
+
+.hero-text {
+  margin: 18px auto 34px;
+  max-width: 420px;
+  font-size: 1rem;
+  color: var(--gris-clair);
+}
+
+/* -----------------------------------------------------------------
+   Réseaux sociaux du hero (Instagram / TikTok)
+   Positionnés en bas du hero ("vers le sol" du salon), en blanc,
+   discrets, bien centrés. Ils sont indépendants de .hero-content
+   (position absolue), donc ils ne perturbent pas son centrage.
+   ----------------------------------------------------------------- */
+.hero-socials {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.hero-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(247, 247, 245, 0.45);
+  border-radius: 50%;
+  color: var(--blanc);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-socials svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Effet au survol réservé aux appareils avec une souris (pas de mobile) */
+@media (hover: hover) and (pointer: fine) {
+  .hero-socials a:hover {
+    border-color: var(--blanc);
+    background: rgba(247, 247, 245, 0.1);
+    transform: translateY(-3px);
+  }
+}
+
+/* -----------------------------------------------------------------
+   Version mobile du hero : image verticale dédiée
+   En dessous de 768px de large (téléphones), on remplace juste
+   l'image de fond par hero-mobile.png (format vertical, 9:16-like),
+   mieux cadrée pour un écran en portrait. On ne touche qu'à
+   "background-image" : la position (center) et le mode "cover"
+   définis plus haut restent les mêmes, donc le salon reste bien
+   centré sans être coupé bizarrement. Le voile noir (.hero-overlay)
+   n'est pas modifié : il s'applique pareil sur les deux versions.
+   ----------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero {
+    background-image: url('../images/hero-mobile.png');
+  }
+
+  /* Titre et textes légèrement réduits pour bien respirer
+     sur un écran étroit, tout en restant centrés */
+  .hero-content h1 {
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+
+  .hero-slogan {
+    font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+  }
+
+  .hero-text {
+    margin: 14px auto 28px;
+    max-width: 280px;
+    font-size: 0.95rem;
+  }
+
+  /* Icônes un peu plus petites et plus proches du bas sur téléphone,
+     pour rester bien visibles sans empiéter sur le texte */
+  .hero-socials {
+    bottom: 24px;
+    gap: 16px;
+  }
+
+  .hero-socials a {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* -----------------------------------------------------------------
+   Animation d'entrée du hero (apparition "cinématographique")
+   Au départ, le titre / slogan / texte / bouton sont invisibles et
+   légèrement décalés vers le bas. Le JavaScript (js/script.js)
+   ajoute la classe .visible à chacun, au bon moment, ce qui déclenche
+   le fondu. La durée et le délai de chaque fondu sont définis par le
+   JS lui-même (transitionDuration en ligne), directement à partir des
+   variables placées en haut de script.js — c'est là qu'il faut
+   modifier la vitesse de l'animation.
+   ----------------------------------------------------------------- */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  /* Courbe douce, adaptée à une animation lente et élégante */
+  transition-timing-function: ease-in-out;
+}
+
+.hero-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =================================================================
+   SECTIONS GÉNÉRALES (titres centrés)
+   ================================================================= */
+.galerie, .contact {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 24px;
+}
+
+.services h2, .galerie h2, .contact h2 {
+  text-align: center;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  margin-bottom: 50px;
+}
+
+/* =================================================================
+   SERVICES / CARTES DE PRIX
+   Section "premium" : fond noir dégradé (cohérent avec le hero),
+   texte clair. .services porte le fond sur toute la largeur de
+   l'écran, .services-inner recentre le contenu (comme les autres
+   sections) sans limiter le fond.
+   ================================================================= */
+.services {
+  background: linear-gradient(180deg, #050505 0%, #131313 100%);
+  color: var(--blanc);
+}
+
+.services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 110px 24px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px;
+}
+
+.card {
+  border: 1px solid rgba(247, 247, 245, 0.22);
+  border-radius: 10px;
+  background: rgba(247, 247, 245, 0.02);
+  padding: 46px 24px;
+  text-align: center;
+  transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+/* Léger soulèvement + bordure qui s'éclaire, réservé aux appareils
+   avec une souris (pas d'effet "collé" au doigt sur mobile/tablette) */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(247, 247, 245, 0.8);
+    background: rgba(247, 247, 245, 0.05);
+  }
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gris-clair);
+  margin-bottom: 18px;
+}
+
+.card .price {
+  font-family: var(--police-titre);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--blanc);
+}
+
+/* Sur les écrans moyens (tablette), 2 colonnes bien aérées */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Sur téléphone, 1 seule colonne pour rester lisible */
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .services-inner {
+    padding: 80px 24px;
+  }
+}
+
+/* =================================================================
+   GALERIE / VIDÉOS
+   ================================================================= */
+.videos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Format vertical 9:16, la vidéo remplit le cadre sans se déformer */
+.video-item {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: var(--noir);
+  border-radius: 4px;
+}
+
+/* Sur mobile : les 3 vidéos passent les unes sous les autres */
+@media (max-width: 768px) {
+  .videos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================================================
+   CONTACT
+   ================================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.contact-infos p {
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+.contact-infos strong {
+  font-family: var(--police-titre);
+  font-size: 1.2rem;
+}
+
+/* -----------------------------------------------------------------
+   Icône "copier l'adresse"
+   Petit bouton rond et discret, juste après le texte de l'adresse.
+   Deux SVG sont superposés dedans (icône presse-papier + coche) ;
+   par défaut seule l'icône presse-papier est visible. La classe
+   .copie (ajoutée par le JS pendant 2 secondes après le clic)
+   fait basculer vers la coche, comme retour visuel de confirmation.
+   ----------------------------------------------------------------- */
+.icone-copier {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 6px;
+  padding: 0;
+  vertical-align: middle;
+  background: transparent;
+  border: 1px solid rgba(10, 10, 10, 0.3);
+  border-radius: 50%;
+  color: var(--noir);
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.icone-copier svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* La coche est cachée par défaut ; seule l'icône presse-papier est visible */
+.icone-copier .icone-copie {
+  display: none;
+}
+.icone-copier.copie .icone-defaut {
+  display: none;
+}
+.icone-copier.copie .icone-copie {
+  display: block;
+}
+
+/* État "copié" : le bouton se remplit, comme une petite confirmation */
+.icone-copier.copie {
+  background: var(--noir);
+  border-color: var(--noir);
+  color: var(--blanc);
+}
+
+/* Survol réservé aux appareils avec une souris (pas d'effet collé au doigt) */
+@media (hover: hover) and (pointer: fine) {
+  .icone-copier:hover {
+    border-color: var(--noir);
+    background: rgba(10, 10, 10, 0.06);
+  }
+}
+
+/* -----------------------------------------------------------------
+   Indicateur "Salon ouvert / fermé"
+   Calculé en JS selon l'heure de Montréal (voir js/script.js).
+   Une pastille grise "en attente" au chargement, puis verte
+   (ouvert) ou rouge (fermé) une fois le calcul fait. Couleurs
+   volontairement discrètes pour rester dans l'esprit noir & blanc.
+   ----------------------------------------------------------------- */
+.statut-salon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--gris);
+}
+
+.statut-pastille {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--gris);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.statut-salon.ouvert {
+  color: #4caf6e;
+}
+.statut-salon.ouvert .statut-pastille {
+  background: #4caf6e;
+  box-shadow: 0 0 6px rgba(76, 175, 110, 0.6);
+}
+
+.statut-salon.ferme {
+  color: #c9615f;
+}
+.statut-salon.ferme .statut-pastille {
+  background: #c9615f;
+  box-shadow: 0 0 6px rgba(201, 97, 95, 0.5);
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+}
+.socials svg {
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s ease;
+}
+.socials a:hover svg {
+  opacity: 0.6;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+  filter: grayscale(1) contrast(1.05); /* la carte reste dans le thème noir et blanc */
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================================================
+   PIED DE PAGE
+   ================================================================= */
+.footer {
+  background: var(--noir);
+  color: var(--blanc);
+  text-align: center;
+  padding: 36px 24px;
+}
+
+.footer-socials {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+.footer-socials a:hover {
+  color: var(--gris-clair);
+}
+
+/* =================================================================
+   ANIMATIONS AU DÉFILEMENT (scroll)
+   Les éléments avec [data-anim] partent invisibles/décalés,
+   puis le JS ajoute la classe .visible quand ils entrent à l'écran.
+   ================================================================= */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+[data-anim].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =================================================================
+   MENU MOBILE / TABLETTE
+   ================================================================= */
+@media (max-width: 900px) {
+  #burger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.97);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links .btn {
+    margin: 16px 24px;
+    width: calc(100% - 48px);
+    text-align: center;
+  }
+
+  .nav-socials {
+    width: 100%;
+    justify-content: center;
+    gap: 22px;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-socials a {
+    width: 40px;
+    height: 40px;
+  }
+  .nav-socials svg {
+    width: 18px;
+    height: 18px;
+  }
+}

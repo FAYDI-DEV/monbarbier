@@ -1,0 +1,33 @@
+# =====================================================================
+# MONT BARBIER — En-têtes de sécurité HTTP
+#
+# Ce fichier est reconnu automatiquement par certains hébergeurs de
+# sites statiques (Netlify, Cloudflare Pages) : il suffit qu'il soit
+# à la racine du site publié pour être appliqué, sans rien configurer.
+#
+# Sur un autre hébergeur (Vercel, GitHub Pages, hébergement mutuel...),
+# ce fichier ne fait RIEN tout seul : il faut configurer les mêmes
+# en-têtes autrement (voir explications données dans le résumé).
+# GitHub Pages, en particulier, ne permet pas du tout de personnaliser
+# les en-têtes HTTP.
+#
+# Pourquoi ces en-têtes (site vitrine simple, sans base de données/paiement) :
+# - X-Content-Type-Options : empêche le navigateur de "deviner" le type
+#   d'un fichier différemment de ce qui est déclaré (protection basique).
+# - Referrer-Policy : limite les informations envoyées aux sites externes
+#   quand un visiteur clique sur un lien sortant.
+# - X-Frame-Options : empêche que le site soit affiché caché dans un
+#   <iframe> sur un autre site (protection contre le "clickjacking").
+# - Permissions-Policy : désactive des fonctionnalités du navigateur que
+#   le site n'utilise pas (micro, caméra, géolocalisation).
+# - Content-Security-Policy : reprend celle déjà mise en balise <meta>
+#   dans index.html, avec en plus frame-ancestors (impossible à faire
+#   fonctionner via une balise <meta>, seulement via un vrai en-tête).
+# =====================================================================
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'

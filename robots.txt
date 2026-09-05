@@ -1,0 +1,109 @@
+# =====================================================================
+# MONT BARBIER — robots.txt
+#
+# Objectif : décourager les robots d'IA / aspirateurs de contenu connus
+# de récupérer ce site, TOUT EN GARDANT le site normalement indexable
+# par les moteurs de recherche classiques (Google, Bing...) pour que les
+# clients puissent trouver le salon.
+#
+# ⚠️ LIMITE IMPORTANTE À COMPRENDRE :
+# robots.txt est une simple DEMANDE, pas une protection technique.
+# Il ne fonctionne que parce que les robots "respectueux" (les grandes
+# entreprises citées ci-dessous, en général) choisissent de le lire et
+# de le respecter. Un robot malveillant, un script fait maison, ou
+# n'importe qui utilisant simplement son navigateur peut totalement
+# ignorer ce fichier et lire/copier le contenu du site quand même,
+# car le code d'un site web est de toute façon visible publiquement
+# (clic droit → "voir le code source"). Ce fichier réduit la collecte
+# par les robots connus et coopératifs, il ne rend rien "privé" ou
+# "protégé" au sens sécurité.
+#
+# Cette liste n'est pas exhaustive : de nouveaux robots d'IA apparaissent
+# régulièrement. Elle couvre les principaux robots connus au moment de
+# la rédaction (2026).
+# =====================================================================
+
+# --- OpenAI (ChatGPT / GPT) ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# --- Anthropic (Claude) ---
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# --- Common Crawl (utilisé pour entraîner de nombreuses IA) ---
+User-agent: CCBot
+Disallow: /
+
+# --- Google : entraînement IA (Gemini/Bard). N'affecte PAS Googlebot,
+#     qui continue d'indexer normalement le site pour la recherche ---
+User-agent: Google-Extended
+Disallow: /
+
+# --- Meta / Facebook ---
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# --- Apple : entraînement IA uniquement (Applebot classique non bloqué,
+#     pour laisser Siri/Spotlight référencer le site normalement) ---
+User-agent: Applebot-Extended
+Disallow: /
+
+# --- ByteDance / TikTok ---
+User-agent: Bytespider
+Disallow: /
+
+# --- Amazon ---
+User-agent: Amazonbot
+Disallow: /
+
+# --- Autres robots de collecte pour IA connus ---
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: ICC-Crawler
+Disallow: /
+
+# --- Tous les autres robots (moteurs de recherche classiques, etc.)
+#     sont autorisés à explorer normalement le site ---
+User-agent: *
+Allow: /

@@ -1,41 +1,26 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# =====================================================================
+# MONT BARBIER — .gitignore
+# Ce que Git ne doit PAS suivre / publier pour ce site statique.
+# =====================================================================
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# Fichiers générés par le système d'exploitation
 .DS_Store
-*.pem
+Thumbs.db
+desktop.ini
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Fichiers temporaires et sauvegardes d'éditeur
+*.tmp
+*.bak
+*~
+*.swp
 
-# env files (can opt-in for committing if needed)
-.env*
+# Fichiers d'environnement (si un jour vous ajoutez des clés/API) —
+# à exclure par précaution, même si ce site n'en a pas besoin pour l'instant
+.env
+.env.*
 
-# vercel
-.vercel
+# Archives compressées (ne devraient pas se retrouver sur le site public)
+*.zip
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Ancienne build locale (copie obsolète, non suivie par Git)
+dist/

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mont Barbier — Barbershop à Rosemont, Montréal</title>
+
+  <!-- Politique de sécurité du contenu (CSP) : n'autorise à charger que
+       nos propres fichiers, plus Google Fonts (police) et Google Maps
+       (carte en bas de page). Bloque tout le reste par défaut. Cette
+       balise couvre l'essentiel, mais certaines protections (comme
+       frame-ancestors) ne fonctionnent qu'en en-tête HTTP réel — voir
+       le fichier _headers pour la version complète côté hébergeur. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+
+  <!-- N'envoie que le strict nécessaire comme "referrer" quand on quitte
+       le site (par ex. en cliquant sur Instagram) : pas l'URL complète -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Signal (non contraignant) demandant aux robots respectueux de ne
+       pas utiliser ce contenu pour entraîner une IA. Voir robots.txt
+       pour le blocage principal, et l'explication de ses limites. -->
+  <meta name="robots" content="noai, noimageai">
+
+  <!-- Police pour les titres : Cormorant Garamond (via Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Notre feuille de style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- NAVIGATION FIXE EN HAUT DE PAGE -->
+  <!-- ============================================= -->
+  <header id="nav">
+    <div class="nav-container">
+      <a href="#accueil" class="nav-logo">
+        <img src="images/logo.png" alt="Logo Mont Barbier">
+        <span>Mont Barbier</span>
+      </a>
+
+      <!-- Liens de navigation (cachés sur mobile, remplacés par le menu ☰) -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+        <div class="nav-socials">
+          <a href="https://www.instagram.com/barber_style_2900/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@abdouch498" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2h3.1c.2 1.6 1.1 3.3 2.8 4.1.9.4 1.9.6 2.9.6v3.2c-1.8 0-3.5-.5-5-1.4v6.7c0 3.5-2.9 6.3-6.4 6.3S5.5 18.7 5.5 15.2c0-3.4 2.7-6.1 6-6.3v3.3c-1.4.2-2.5 1.4-2.5 2.9 0 1.6 1.3 3 3 3s3-1.3 3-3V2z"/></svg>
+          </a>
+        </div>
+        <a href="https://reservation-api.faydi-devpro.workers.dev/mont-barbier" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Réserver</a>
+      </nav>
+
+      <!-- Bouton hamburger, visible seulement sur mobile/tablette -->
+      <button id="burger" aria-label="Ouvrir le menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- SECTION HERO (pleine page) -->
+  <!-- ============================================= -->
+  <section id="accueil" class="hero">
+    <div class="hero-overlay"></div>
+    <!-- Le bloc hero-content n'a plus de data-anim : le hero est visible
+         tout de suite (image + voile). Chaque texte à l'intérieur porte
+         la classe "hero-reveal" : il démarre invisible, et c'est le
+         JavaScript (js/script.js) qui déclenche son apparition en fondu,
+         un par un, avec des minuteurs (voir "ANIMATION D'ENTRÉE DU HERO"). -->
+    <div class="hero-content">
+      <h1 class="hero-reveal">MONT BARBIER</h1>
+      <p class="hero-slogan hero-reveal">Le sommet du style</p>
+      <p class="hero-text hero-reveal">Barbershop haut de gamme à Rosemont, Montréal.</p>
+    </div>
+
+    <!-- Réseaux sociaux en bas du hero, vers le "sol" du salon.
+         Ils font aussi partie de la cascade d'apparition (classe hero-reveal),
+         voir js/script.js. -->
+    <div class="hero-socials hero-reveal">
+      <a href="https://www.instagram.com/barber_style_2900/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@abdouch498" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2h3.1c.2 1.6 1.1 3.3 2.8 4.1.9.4 1.9.6 2.9.6v3.2c-1.8 0-3.5-.5-5-1.4v6.7c0 3.5-2.9 6.3-6.4 6.3S5.5 18.7 5.5 15.2c0-3.4 2.7-6.1 6-6.3v3.3c-1.4.2-2.5 1.4-2.5 2.9 0 1.6 1.3 3 3 3s3-1.3 3-3V2z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION SERVICES / PRIX -->
+  <!-- ============================================= -->
+  <section id="services" class="services">
+    <!-- .services-inner recentre le contenu (largeur max + espacement),
+         pendant que .services porte le fond dégradé sur toute la largeur -->
+    <div class="services-inner">
+      <h2 data-anim>Liste de prix</h2>
+
+      <div class="cards">
+        <div class="card" data-anim>
+          <h3>Coupe adultes</h3>
+          <p class="price">30$</p>
+        </div>
+        <div class="card" data-anim>
+          <h3>Coupe enfants</h3>
+          <p class="price">25$</p>
+        </div>
+        <div class="card" data-anim>
+          <h3>Barbe</h3>
+          <p class="price">15$</p>
+        </div>
+        <div class="card" data-anim>
+          <h3>Brushing</h3>
+          <p class="price">10$</p>
+        </div>
+        <div class="card" data-anim>
+          <h3>Coupe &amp; barbe</h3>
+          <p class="price">35$</p>
+        </div>
+        <div class="card" data-anim>
+          <h3>Coupe, barbe &amp; brushing</h3>
+          <p class="price">40$</p>
+        </div>
+        <!-- Kératine / protéine est maintenant une carte comme les autres,
+             plutôt qu'une bande à part -->
+        <div class="card" data-anim>
+          <h3>Kératine / protéine</h3>
+          <p class="price">À partir de 90$</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION GALERIE (vidéos verticales) -->
+  <!-- ============================================= -->
+  <section id="galerie" class="galerie">
+    <h2 data-anim>Galerie</h2>
+
+    <div class="videos">
+      <!-- autoplay + loop + muted + playsinline = lecture automatique silencieuse, y compris sur iPhone -->
+      <video class="video-item" data-anim src="videos/video1.mp4" autoplay loop muted playsinline></video>
+      <video class="video-item" data-anim src="videos/video2.mp4" autoplay loop muted playsinline></video>
+      <video class="video-item" data-anim src="videos/video3.mp4" autoplay loop muted playsinline></video>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION CONTACT -->
+  <!-- ============================================= -->
+  <section id="contact" class="contact">
+    <h2 data-anim>Contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-infos" data-anim>
+        <p>
+          <strong>Adresse</strong><br>
+          2900 Bd Rosemont, Montréal, QC H1Y 1L9
+          <!-- Icône "copier l'adresse" : copie le texte dans le presse-papier au clic
+               (voir js/script.js, section 5). Deux SVG sont superposés : l'icône
+               presse-papier par défaut, et une coche affichée brièvement après la
+               copie (le CSS/JS bascule entre les deux avec la classe .copie). -->
+          <button type="button" id="btn-copier-adresse" class="icone-copier" aria-label="Copier l'adresse">
+            <svg class="icone-defaut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            <svg class="icone-copie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+          </button>
+        </p>
+        <p><strong>Téléphone</strong><br>(581) 624-0300</p>
+        <p><strong>Horaires</strong><br>
+          Mardi 10h–20h<br>
+          Mercredi 12h–21h30<br>
+          Jeudi à Lundi 11h–21h30
+        </p>
+
+        <!-- Indicateur "ouvert / fermé", calculé en JS selon l'heure de
+             Montréal (voir js/script.js, section "STATUT OUVERT / FERMÉ") -->
+        <p class="statut-salon" id="statut-salon">
+          <span class="statut-pastille" aria-hidden="true"></span>
+          <span id="statut-texte">Vérification des horaires…</span>
+        </p>
+
+        <!-- Icônes des réseaux sociaux (SVG simples, pas besoin de librairie externe) -->
+        <div class="socials">
+          <a href="https://www.instagram.com/barber_style_2900/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@abdouch498" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2h3.1c.2 1.6 1.1 3.3 2.8 4.1.9.4 1.9.6 2.9.6v3.2c-1.8 0-3.5-.5-5-1.4v6.7c0 3.5-2.9 6.3-6.4 6.3S5.5 18.7 5.5 15.2c0-3.4 2.7-6.1 6-6.3v3.3c-1.4.2-2.5 1.4-2.5 2.9 0 1.6 1.3 3 3 3s3-1.3 3-3V2z"/></svg>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=2900+Bd+Rosemont+Montr%C3%A9al+QC+H1Y+1L9" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Carte Google Maps intégrée -->
+      <div class="contact-map" data-anim>
+        <iframe
+          src="https://www.google.com/maps?q=2900+Bd+Rosemont,+Montr%C3%A9al,+QC+H1Y+1L9&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- PIED DE PAGE -->
+  <!-- ============================================= -->
+  <footer class="footer">
+    <p>&copy; 2025 Mont Barbier — Le sommet du style</p>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/barber_style_2900/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@abdouch498" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </footer>
+
+  <!-- Notre code JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
