@@ -32,6 +32,7 @@ const DUREE_FONDU_CASCADE = 1200; // durée du fondu de chaque élément qui sui
   const titre = document.querySelector('.hero-content h1');
   const slogan = document.querySelector('.hero-slogan');
   const texte = document.querySelector('.hero-text');
+  const bouton = document.querySelector('.hero-btn');
   const reseaux = document.querySelector('.hero-socials');
 
   // Programme l'apparition en fondu d'un élément à un instant précis (delai),
@@ -52,7 +53,8 @@ const DUREE_FONDU_CASCADE = 1200; // durée du fondu de chaque élément qui sui
   // chacun décalé d'un cran (DECALAGE_CASCADE) par rapport au précédent
   programmerApparition(slogan, DELAI_AVANT_TITRE + DECALAGE_CASCADE * 1, DUREE_FONDU_CASCADE);
   programmerApparition(texte, DELAI_AVANT_TITRE + DECALAGE_CASCADE * 2, DUREE_FONDU_CASCADE);
-  programmerApparition(reseaux, DELAI_AVANT_TITRE + DECALAGE_CASCADE * 3, DUREE_FONDU_CASCADE);
+  programmerApparition(bouton, DELAI_AVANT_TITRE + DECALAGE_CASCADE * 3, DUREE_FONDU_CASCADE);
+  programmerApparition(reseaux, DELAI_AVANT_TITRE + DECALAGE_CASCADE * 4, DUREE_FONDU_CASCADE);
 })();
 
 // ---------------------------------------------------------------------

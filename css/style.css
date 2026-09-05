@@ -208,10 +208,31 @@ section, .footer {
 }
 
 .hero-text {
-  margin: 18px auto 34px;
+  margin: 18px auto 0;
   max-width: 420px;
   font-size: 1rem;
   color: var(--gris-clair);
+}
+
+/* Bouton "Réserver" mis en avant dans le hero : plus grand et plein
+   (contrairement à celui, discret, de la nav) pour capter le regard
+   dans l'espace entre le texte et les icônes sociales. */
+.hero-btn {
+  margin-top: 34px;
+  padding: 16px 44px;
+  font-size: 0.95rem;
+  background: var(--blanc);
+  color: var(--noir);
+  border: 1px solid var(--blanc);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-btn:hover {
+    background: transparent;
+    color: var(--blanc);
+    box-shadow: none;
+  }
 }
 
 /* -----------------------------------------------------------------
@@ -283,9 +304,15 @@ section, .footer {
   }
 
   .hero-text {
-    margin: 14px auto 28px;
+    margin: 14px auto 0;
     max-width: 280px;
     font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    margin-top: 24px;
+    padding: 14px 36px;
+    font-size: 0.85rem;
   }
 
   /* Icônes un peu plus petites et plus proches du bas sur téléphone,
